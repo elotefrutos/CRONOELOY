@@ -11,10 +11,13 @@ package mvc_cronoeloy;
 public class MVC_CRONOELOY {
 
     /**
-     * @param args the command line arguments
+     * Es el metodo principal del proyecto
+     * @param args eL array de cadenas-palabras que captura el programa
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //TODAS LAS ACCIONES CON UN SOUT DESCRIBIENDO LO QUE HACE
+        //BLOQUE DE ARGUMENTOS
+        System.out.println("INICIANDO PROGRAMA...");
     }
     
 }
