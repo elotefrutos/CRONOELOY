@@ -18,7 +18,8 @@ public class MVC_CRONOELOY {
         //TODAS LAS ACCIONES CON UN SOUT DESCRIBIENDO LO QUE HACE
         //BLOQUE DE ARGUMENTOS
         System.out.println("INICIANDO PROGRAMA...");
-        new MiVista().setVisible(true);
+        MiVista MioVista = new MiVista(); 
+        MioVista.setVisible(true);
     }
     
 }
