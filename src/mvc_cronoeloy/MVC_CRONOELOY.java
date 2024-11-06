@@ -17,9 +17,13 @@ public class MVC_CRONOELOY {
     public static void main(String[] args) {
         //TODAS LAS ACCIONES CON UN SOUT DESCRIBIENDO LO QUE HACE
         //BLOQUE DE ARGUMENTOS
-        System.out.println("INICIANDO PROGRAMA...");
-        MiVista MioVista = new MiVista(); 
-        MioVista.setVisible(true);
+System.out.println("INICIANDO PROGRAMA CRONOELOY...");
+
+        VistaCronoEloy vistaCronoeloy = new VistaCronoEloy();
+        ModeloCronoeloy modeloCronoeloy = new ModeloCronoeloy();
+        ControladorCronoeloy controladorCronoeloy = new ControladorCronoeloy(vistaCronoeloy, modeloCronoeloy);
+
+        vistaCronoeloy.setVisible(true);
     }
     
 }

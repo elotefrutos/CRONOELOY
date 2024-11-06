@@ -8,6 +8,10 @@ package mvc_cronoeloy;
  *
  * @author dam2
  */
-public class MiContralador {
-     
+public class ModeloCronoeloy {
+    
+    public String obtenerMensajeBienvenida() {
+    
+       return "Bienvenido al Proyecto CRONOELOY";
+    }
 }

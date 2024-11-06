@@ -4,10 +4,10 @@
  */
 package mvc_cronoeloy;
 
-/**
- *
- * @author dam2
- */
-public class MiModelo {
-    
+import javax.swing.*;
+import java.awt.*;
+
+public class VistaCronoEloy extends JFrame {
+ 
+
 }
