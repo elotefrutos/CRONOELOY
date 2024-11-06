@@ -19,7 +19,7 @@ public class MVC_CRONOELOY {
         //BLOQUE DE ARGUMENTOS
         System.out.println("INICIANDO PROGRAMA CRONOELOY...");
 
-        VistaCronoEloy vistaCronoeloy = new VistaCronoEloy();
+        VistaCronoeloy vistaCronoeloy = new VistaCronoeloy();
         ModeloCronoeloy modeloCronoeloy = new ModeloCronoeloy();
         ControladorCronoeloy controladorCronoeloy = new ControladorCronoeloy(vistaCronoeloy, modeloCronoeloy);
 

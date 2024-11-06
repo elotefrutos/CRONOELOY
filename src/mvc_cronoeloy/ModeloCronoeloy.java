@@ -10,8 +10,4 @@ package mvc_cronoeloy;
  */
 public class ModeloCronoeloy {
     
-    public String obtenerMensajeBienvenida() {
-    
-       return "Bienvenido al Proyecto CRONOELOY";
-    }
 }

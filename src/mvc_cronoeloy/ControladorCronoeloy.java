@@ -9,16 +9,17 @@ package mvc_cronoeloy;
  * @author dam2
  */
 public class ControladorCronoeloy {
-    private VistaCronoEloy vistaCronoEloy;
+    private VistaCronoeloy vistaCronoEloy;
     private ModeloCronoeloy modeloCronoEloy;
 
-    public ControladorCronoeloy(VistaCronoEloy vista, ModeloCronoeloy modelo) {
+    public ControladorCronoeloy(VistaCronoeloy vista, ModeloCronoeloy modelo) {
         this.vistaCronoEloy = vista;
         this.modeloCronoEloy = modelo;
         inicializarVista();
     }
 
     private void inicializarVista() {
-        
+    vistaCronoEloy.actualizarMensaje("Bienvenido a tu calendario CRONOELOY");
+
     }
 }
