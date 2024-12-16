@@ -2,47 +2,66 @@ package mvc_cronoeloy;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 
 public class VistaCronoeloy extends JFrame {
-    private JLabel labelMensaje;
+    private JPanel panelCentral;
 
     public VistaCronoeloy() {
-        setTitle("Ventana Principal - CRONOELOY");
-        setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Ventana Principal");
+        setSize(800, 600);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear un fondo personalizado con la clase FondoPanel
-        FondoPanel panelFondo = new FondoPanel("C:\\Users\\dam2\\Documents\\NetBeansProjects\\DESARROLLO DE INTERFACES\\MVC_CRONOELOY\\fondo.jpg");
-        panelFondo.setLayout(new BorderLayout()); 
-        add(panelFondo, BorderLayout.CENTER);
+        // Menú
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menuArchivo = new JMenu("Archivo");
+        
+        // Elementos del menú
+        JMenuItem itemAjustes = new JMenuItem("Ajustes");
+        JMenuItem itemAñadirReunion = new JMenuItem("Añadir Reunión");
+        JMenuItem itemAñadirDiaTrabajo = new JMenuItem("Añadir Día de Trabajo");
+        JMenuItem itemSalir = new JMenuItem("Salir");
 
-        // Crear y agregar el JLabel para el mensaje de bienvenida centrado
-        labelMensaje = new JLabel("Bienvenido a tu calendario CRONOELOY", SwingConstants.CENTER);
-        labelMensaje.setFont(new Font("Arial", Font.BOLD, 24)); // Ajuste del tamaño del texto
-        labelMensaje.setForeground(Color.BLACK); // Color del texto para que contraste con el fondo
-        panelFondo.add(labelMensaje, BorderLayout.CENTER); // Añadir el mensaje sobre la imagen
+        // Agregar elementos al menú
+        menuArchivo.add(itemAñadirReunion);
+        menuArchivo.add(itemAñadirDiaTrabajo);
+        menuArchivo.add(itemAjustes);
+        menuArchivo.add(itemSalir);
+        menuBar.add(menuArchivo);
+        setJMenuBar(menuBar);
+
+        // Panel central
+        panelCentral = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar y dibujar la imagen de fondo
+                Image fondo = new ImageIcon("fondo.jpg").getImage();
+                g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        panelCentral.setLayout(new BorderLayout());
+        add(panelCentral, BorderLayout.CENTER);
+
+        // Listeners
+         itemSalir.addActionListener(e -> {
+            System.out.println("Saliendo de la aplicación..."); // Mensaje en consola al salir
+            System.exit(0);
+        });
+    }
+    
+
+    public void addActionListenerBtnConf(ActionListener listener) {
+        ((JMenuItem) getJMenuBar().getMenu(0).getItem(2)).addActionListener(listener); // Ajustes
     }
 
-    public void actualizarMensaje(String mensaje) {
-        labelMensaje.setText(mensaje);
+    public void addActionListenerBtnAñadirReunion(ActionListener listener) {
+        ((JMenuItem) getJMenuBar().getMenu(0).getItem(0)).addActionListener(listener); // Añadir Reunión
     }
 
-    // Clase personalizada para el fondo
-    class FondoPanel extends JPanel {
-        private Image imagen;
-
-        // Constructor que recibe la ruta de la imagen
-        public FondoPanel(String rutaImagen) {
-            imagen = new ImageIcon(rutaImagen).getImage();
-        }
-
-        // Sobreescribir paintComponent para dibujar la imagen
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            // Dibujar la imagen escalada al tamaño del panel
-            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-        }
+    public void addActionListenerBtnAñadirDiaTrabajo(ActionListener listener) {
+        ((JMenuItem) getJMenuBar().getMenu(0).getItem(1)).addActionListener(listener); // Añadir Día de Trabajo
     }
 }
