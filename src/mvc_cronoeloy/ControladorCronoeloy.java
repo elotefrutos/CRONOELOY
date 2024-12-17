@@ -4,9 +4,11 @@
  */
 package mvc_cronoeloy;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingUtilities;
+import java.io.File;
+import javax.swing.*;
 
 /**
  *
@@ -23,6 +25,7 @@ public class ControladorCronoeloy implements ActionListener {
         this.ventanaPrincipal = ventanaPrincipal;
         this.ventanaPresentacion = new VPresentacion();
         this.ventanaConfig = new MiVentanaConfig(ventanaPrincipal, true);
+        configurarListenersVentanaConfig();
         arranque();
     }
 
@@ -52,24 +55,35 @@ public class ControladorCronoeloy implements ActionListener {
     private void cargarDatosGuardados() {
         System.out.println("Cargando datos guardados...");
     }
+    
+    private void configurarListenersVentanaConfig() {
+        // Listener del botón OK
+        ventanaConfig.addActionListenerBtnOk(event -> {
+            File iconoFile = ventanaConfig.getIconoSeleccionado();
+            if (iconoFile != null) {
+                // Cambiar el icono de la ventana principal
+                ImageIcon icono = new ImageIcon(iconoFile.getAbsolutePath());
+                ventanaPrincipal.setIconImage(icono.getImage());
+                JOptionPane.showMessageDialog(ventanaPrincipal, "Icono cambiado correctamente.");
+                System.out.println("Se cambio el icono de la aplicación");
+            } else {
+                JOptionPane.showMessageDialog(ventanaPrincipal, "No se seleccionó ningún icono.");
+            }
+            ventanaConfig.dispose(); // Cierra la ventana de configuración
+        });
+
+        // Listener del botón Cancelar
+        ventanaConfig.addActionListenerBtnCancel(event -> {
+            ventanaConfig.dispose();
+        });
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Evento: " + e.getActionCommand());
         switch (e.getActionCommand()) {
             case "Ajustes":
-                // Mostrar la ventana de configuración
                 ventanaConfig.setVisible(true);
-                ventanaConfig.addActionListenerBtnOk(event -> {
-                    String titulo = ventanaConfig.getTextoFieldTitulo();
-                    datos.setVTituloPrincipal(titulo);
-                    ventanaPrincipal.setTitle(titulo); // Actualizar el título
-                    System.out.println("Título actualizado: " + titulo);
-                    ventanaConfig.dispose();
-                });
-                ventanaConfig.addActionListenerBtnCancel(event -> {
-                    ventanaConfig.dispose();
-                });
                 break;
             case "Añadir Reunión":
                 System.out.println("Añadiendo reunión...");
